@@ -1,0 +1,40 @@
+.container{
+    
+    display: flex;
+    align-items: center;
+    
+}
+
+.input {
+width: 40vw;
+height: 36px;
+border: none;
+}
+
+.button {
+    cursor: pointer;
+top: 0px;
+border-radius: 0; 
+border: none;
+background-color: #6243ec;
+background-image: url("../../../sources/search.png");
+background-repeat: no-repeat;
+background-position: 2px  ;
+background-position-x: 8px  ;
+width: 38px;
+height: 36px;
+
+}
+@media (max-width:700px){
+    .input {
+        width: 0vw;
+        height: 36px;
+        border: none;
+        }
+    .logo{
+        position: absolute;
+        height: 50px;
+        top: 15px;
+        left: 5px;
+    } 
+}

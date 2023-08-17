@@ -1,0 +1,50 @@
+.container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  
+ 
+  
+}
+.start{
+  position: relative;
+ width: 35vw;
+  z-index: 5;
+}
+
+
+video {
+  position: absolute;
+  top: 0 ;
+ left: 0;
+ width: 100vw;
+ height: 100vh;
+ object-fit: cover;
+}
+
+button{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:larger;
+  position: relative;
+border-radius: 5px;
+  z-index: 2;
+  color: white;
+  height: 50px;
+  width: 100px;
+  background-color: #6243ec;
+  border: none;
+}
+
+@media (max-width:700px){
+  .start{
+    
+      width: 300px;
+  }
+}
+
+
+  

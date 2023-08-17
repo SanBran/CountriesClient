@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.39);
+    width: 360px;
+    height: 400px;
+    
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+    overflow: hidden;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+.image {
+    width: 361px;
+    height: 250px;
+}
+
+.name{
+    position: relative;
+    font-size:xx-large;
+    top: -20px;
+    color: #6243ec;
+
+}
+
+
+.link{
+    text-decoration: none;
+    color:black;
+}
+.hs{
+    position: relative;
+    font-size: medium;
+    z-index: 10;
+    top: -10px;
+    color: rgba(48, 48, 48, 0.856);
+    
+    
+
+}
