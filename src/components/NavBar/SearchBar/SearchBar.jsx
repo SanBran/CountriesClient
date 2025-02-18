@@ -1,44 +1,56 @@
-import React from "react"
-import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import { getCountryByName } from "../../../redux/actions"
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getCountryByName } from "../../../redux/actions";
 
-import styles from "./SearchBar.module.css"
+import styles from "./SearchBar.module.css";
 
+const SearchBar = ({ setCurrentPage, setActive, setLoading }) => {
+  const [searchString, setSearchString] = useState("");
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-const SearchBar = ({setCurrentPage, setActive, setLoading}) => {
+  const handleChange = (e) => {
+    setSearchString(e.target.value);
+  };
 
-    
-    const [searchString, setSearchString] = useState('');
-        
-    const dispatch = useDispatch();
-    const navigate = useNavigate()
-      
+  const handleSubmit = (e) => {
+    navigate("/home");
 
-    const handleChange = (e) => {
-        setSearchString(e.target.value);
+    dispatch(getCountryByName(searchString))
+      .then((res) => setActive(1))
+      .catch((err) => err);
+
+    setCurrentPage(1);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
     }
+  };
 
-    const handleSubmit = (e) => {
-        navigate("/home")
-        
-        dispatch(getCountryByName(searchString))
-        
-        .then(res => setActive(1))
-        .catch(err => err)
+  return (
+    <div className={styles.container}>
+      <input
+        className={styles.input}
+        value={searchString}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        type="search"
+        placeholder="Search Country"
+      />
+      {searchString === "" ? (
+        <button className={styles.button} disabled></button>
+      ) : (
+        <button
+          className={styles.button}
+          onClick={() => handleSubmit(searchString)}
+        ></button>
+      )}
+    </div>
+  );
+};
 
-        setCurrentPage(1)
-
-    }
-
-    return (
-        <div className={styles.container}>
-            <input className={styles.input} value={searchString} onChange={handleChange} type="search" placeholder="   Search Country"/>
-            {searchString === '' ? <button className={styles.button} disabled ></button> : <button className={styles.button} onClick={() => handleSubmit(searchString)}></button>}
-        </div>
-    )
-}
-
-export default SearchBar
+export default SearchBar;
